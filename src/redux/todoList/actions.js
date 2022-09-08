@@ -1,5 +1,6 @@
 // Action Types
 import {
+  LOAD,
   ADD,
   REMOVE,
   TOGGLE_STATUS,
@@ -9,6 +10,13 @@ import {
 } from "./actionTypes";
 
 // Actions
+const load = (payload) => {
+  return {
+    type: LOAD,
+    payload,
+  };
+};
+
 const add = (payload) => {
   return {
     type: ADD,
@@ -53,6 +61,7 @@ const clearAllCompleted = (payload) => {
 
 // Export
 export {
+  load,
   add,
   remove,
   toggleStatus,

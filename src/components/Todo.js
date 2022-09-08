@@ -3,8 +3,10 @@ import React from "react";
 // Dependencies
 import { useDispatch } from "react-redux";
 
-// Actions
-import { remove, toggleStatus, setPriority } from "../redux/todoList/actions";
+// Thunks
+import toggleTodoStatus from "../redux/todoList/thunk/toggleTodoStatus";
+import setTodoPriority from "../redux/todoList/thunk/setTodoPriority";
+import deleteTodo from "../redux/todoList/thunk/deleteTodo";
 
 // Todo
 const Todo = ({ todo }) => {
@@ -25,8 +27,9 @@ const Todo = ({ todo }) => {
             checked={todo.completed}
             onChange={() => {
               dispatch(
-                toggleStatus({
+                toggleTodoStatus({
                   id: todo.id,
+                  currentStatus: todo.completed,
                 })
               );
             }}
@@ -57,7 +60,7 @@ const Todo = ({ todo }) => {
           }`}
           onClick={() => {
             dispatch(
-              setPriority({
+              setTodoPriority({
                 id: todo.id,
                 priority: "green",
               })
@@ -71,7 +74,7 @@ const Todo = ({ todo }) => {
           }`}
           onClick={() => {
             dispatch(
-              setPriority({
+              setTodoPriority({
                 id: todo.id,
                 priority: "yellow",
               })
@@ -85,7 +88,7 @@ const Todo = ({ todo }) => {
           }`}
           onClick={() => {
             dispatch(
-              setPriority({
+              setTodoPriority({
                 id: todo.id,
                 priority: "red",
               })
@@ -99,7 +102,7 @@ const Todo = ({ todo }) => {
           alt="Cancel"
           onClick={() => {
             dispatch(
-              remove({
+              deleteTodo({
                 id: todo.id,
               })
             );

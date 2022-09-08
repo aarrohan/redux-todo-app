@@ -4,7 +4,10 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 
 // Actions
-import { add, completeAll, clearAllCompleted } from "../redux/todoList/actions";
+import { completeAll, clearAllCompleted } from "../redux/todoList/actions";
+
+// Thunks
+import addTodo from "../redux/todoList/thunk/addTodo";
 
 // Header
 const Header = () => {
@@ -19,7 +22,7 @@ const Header = () => {
     e.preventDefault();
 
     dispatch(
-      add({
+      addTodo({
         text: todoText,
       })
     );
@@ -43,6 +46,7 @@ const Header = () => {
             onChange={(e) => {
               setTodoText(e.target.value);
             }}
+            required
           />
           <button
             type="submit"

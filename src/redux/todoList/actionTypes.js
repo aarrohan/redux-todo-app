@@ -1,4 +1,5 @@
 // Action Types
+const LOAD = "todoList/load";
 const ADD = "todoList/add";
 const REMOVE = "todoList/remove";
 const TOGGLE_STATUS = "todoList/toggleStatus";
@@ -8,6 +9,7 @@ const CLEAR_ALL_COMPLETED = "todoList/clearAllCompleted";
 
 // Export
 export {
+  LOAD,
   ADD,
   REMOVE,
   TOGGLE_STATUS,

@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 // Dependencies
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+
+// Thunks
+import fetchTodoList from "../redux/todoList/thunk/fetchTodoList";
 
 // Components
 import Todo from "./Todo";
@@ -11,6 +14,14 @@ const TodoList = () => {
   // States
   const filter = useSelector((state) => state.filter);
   const todoList = useSelector((state) => state.todoList);
+
+  // Dispatch
+  const dispatch = useDispatch();
+
+  // Dispatch Thunk
+  useEffect(() => {
+    dispatch(fetchTodoList);
+  }, [dispatch]);
 
   return (
     <React.Fragment>

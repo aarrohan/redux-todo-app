@@ -1,5 +1,6 @@
 // Action Types
 import {
+  LOAD,
   ADD,
   REMOVE,
   TOGGLE_STATUS,
@@ -9,14 +10,7 @@ import {
 } from "./actionTypes";
 
 // Initial State
-const initialState = [
-  {
-    id: 1,
-    text: "Hello World",
-    priority: "green",
-    completed: true,
-  },
-];
+const initialState = [];
 
 // Functions
 const nextTodoID = (todoList) => {
@@ -31,13 +25,15 @@ const nextTodoID = (todoList) => {
 // Reducer
 const todoListReducer = (state = initialState, action) => {
   switch (action.type) {
+    case LOAD:
+      return action.payload.todoList;
+
     case ADD:
       return [
         ...state,
         {
           id: nextTodoID(state),
           text: action.payload.text,
-          priority: action.payload.priority,
           completed: false,
         },
       ];
